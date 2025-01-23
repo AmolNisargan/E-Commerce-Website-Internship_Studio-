@@ -75,12 +75,15 @@ This project is a basic **E-Commerce Website** designed with essential pages and
 2. Navigate to the project directory:
    ```bash
    cd E-Commerce-Website
+   
    Open index.html in a browser to view the website.
 
 ## Future Enhancements
+
 Add a payment gateway.
-Improve the UI design for a better user experience.
+
 Implement a backend for dynamic product loading and user authentication.
+
 Author
 Amol Nisargan
 
