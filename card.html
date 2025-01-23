@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Website</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts.js" defer></script>
+</head>
+<body>
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+        <a class="navbar-brand" href="#">E-Shop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <form action="search-page.html">
+            <input type="text">
+            <button type="submit" class="btn-warning">Search</button>
+        </form>
+        <div class="collapse navbar-collapse" id="navbarNav" >
+            <ul class="navbar-nav ml-auto" >
+                <li class="nav-item"><a class="nav-link" href="index.html" >Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+                <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="card.html">Cart</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Cart Page -->
+    <section id="cart" class="container my-5">
+        <h2 class="text-center mb-4">Your Cart</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Image</th>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="images/latest products/p1.jpg" alt="Product 1"></td>
+                        <td>SmartPhone</td>
+                        <td><input type="number" class="form-control" value="1" min="1"></td>
+                        <td>$200</td>
+                        <td>$200</td>
+                        <td><button class="btn btn-danger btn-sm">Remove</button></td>
+                    </tr>
+                    <tr>
+                        <td><img src="images/latest products/p2.jpg" alt="Product 2"></td>
+                        <td>HomeTheatre</td>
+                        <td><input type="number" class="form-control" value="2" min="1"></td>
+                        <td>$150</td>
+                        <td>$300</td>
+                        <td><button class="btn btn-danger btn-sm">Remove</button></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="4" class="text-right">Total Amount</th>
+                        <th>$500</th>
+                        <th></th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="text-right">
+            <a href="checkout.html" class="btn btn-success">Proceed to Checkout</a>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="btn btn-primary" onclick="scrollToTop()">Scroll to Top</button>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 E-Shop. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Scroll to Top Functionality
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Show Button on Scroll
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('#scrollToTop').fadeIn();
+            } else {
+                $('#scrollToTop').fadeOut();
+            }
+        });
+    </script>
+</body>
+</html>

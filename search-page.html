@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Products</title>
+    <!-- Bootstrap 5 CSS -->
+     <!-- Latest Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="icon" href="favicon.ico">
+   
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .header-section {
+            background-color: #007bff;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .header-section h1 {
+            font-size: 3em;
+        }
+
+        .search-bar {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .search-bar input {
+            width: 60%;
+            padding: 10px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            margin-left: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+        }
+
+        .product-list {
+            margin-top: 50px;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .product-card h4 {
+            margin-top: 20px;
+        }
+
+        .product-card p {
+            color: #6c757d;
+        }
+
+        .product-card .btn {
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            padding: 10px 20px;
+        }
+
+        #scrollToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            z-index: 99;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 50%;
+            border: none;
+        }
+
+        footer {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+     <!-- Navbar -->
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid px-0">
+            <a class="navbar-brand ms-3" href="#">E-Shop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto me-3">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="product.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about-us.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="card.html">Cart</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    
+
+    <!-- Header Section -->
+    <div class="header-section">
+        <h1>Search Products</h1>
+        <p>Find your favorite products here</p>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="container search-bar">
+        <input type="text" id="searchInput" placeholder="Search for products...">
+        <button id="searchButton">Search</button>
+    </div>
+
+    <!-- Product Listing Section -->
+    <div class="container product-list" id="productList">
+        <!-- Product cards will be dynamically populated here -->
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" onclick="scrollToTop()">&#8593;</button>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 E-Shop. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                $('#scrollToTop').fadeIn();
+            } else {
+                $('#scrollToTop').fadeOut();
+            }
+        });
+
+        const products = [
+            { id: 1, name: "Home Theatre", description: "Noise-cancelling over-ear headphones", image: "images/latest products/p2.jpg", price: "$99.99" },
+            { id: 2, name: "Smartphone", description: "Latest model with 5G support", image: "images/latest products/p1.jpg", price: "$799.99" },
+            { id: 3, name: "Bluetooth Speaker", description: "Portable waterproof speaker", image: "images/latest products/p2.jpg", price: "$59.99" },
+            { id: 4, name: "Laptop", description: "15-inch laptop with powerful processor", image: "images/latest products/p3.jpg", price: "$1099.99" },
+            { id: 5, name: "Smartwatch", description: "Fitness tracking and notifications", image: "images/latest products/smart watch.jpg", price: "$199.99" }
+        ];
+
+        function displayProducts(filteredProducts) {
+            const productList = $("#productList");
+            productList.empty();
+            filteredProducts.forEach(product => {
+                productList.append(`
+                    <div class="col-md-4">
+                        <div class="product-card">
+                            <img src="${product.image}" alt="${product.name}">
+                            <h4>${product.name}</h4>
+                            <p>${product.description}</p>
+                            <p><strong>${product.price}</strong></p>
+                            <button class="btn">Add to Cart</button>
+                        </div>
+                    </div>
+                `);
+            });
+        }
+
+        displayProducts(products);
+
+        $("#searchButton").click(function() {
+            const query = $("#searchInput").val().toLowerCase();
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(query) || 
+                product.description.toLowerCase().includes(query)
+            );
+            displayProducts(filteredProducts);
+        });
+
+        $("#searchInput").on("input", function() {
+            const query = $(this).val().toLowerCase();
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(query) || 
+                product.description.toLowerCase().includes(query)
+            );
+            displayProducts(filteredProducts);
+        });
+    </script>
+
+</body>
+</html>
