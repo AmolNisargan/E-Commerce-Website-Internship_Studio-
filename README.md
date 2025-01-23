@@ -65,7 +65,7 @@ This project is a basic **E-Commerce Website** designed with essential pages and
 
 ## Technologies Used  
 - **Frontend:** HTML, CSS, JavaScript, Bootstrap  
-- **Backend (if applicable):** Node.js, Express.js, MySQL (or any database)  
+- **Backend:** Node.js, Express.js, MySQL.  
 - **Tools & Libraries:** jQuery for form validation  
 
 ## Installation  
